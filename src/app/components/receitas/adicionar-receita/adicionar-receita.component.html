@@ -1,0 +1,99 @@
+<div *ngIf="!formulario">
+    <mat-progress-bar mode="buffer"></mat-progress-bar>
+</div>
+
+<div class="divCard" *ngIf="formulario">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title><h3>Adicionar Receita</h3></mat-card-title>
+        </mat-card-header>
+
+        <form [formGroup]="formulario" (ngSubmit)="EnviarFormulario()">
+
+            <div class="cardErros" *ngIf="erros.length > 0">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>Algo deu errado :(</mat-card-title>
+                    </mat-card-header>
+                    <mat-divider></mat-divider>
+                    <mat-card-content>
+                        <div class="divErros">
+                            <h4 class="textoErros" *ngFor="let erro of erros">
+                                {{erro}}
+                            </h4>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+            <mat-card-content>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Descrição</mat-label>
+                        <input
+                            type="text"
+                            matInput
+                            formControlName="descricao"
+                            placeholder="Informe a descrição" is required/>
+
+                        <mat-error *ngIf="propriedade.descricao.touched && propriedade.descricao.invalid">
+                            <sup>*</sup> Informe a descrição
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Valor</mat-label>
+                        <input
+                            type="number"
+                            matInput
+                            formControlName="valor"
+                            placeholder="Informe o valor" is required/>
+
+                        <mat-error *ngIf="propriedade.valor.touched && propriedade.valor.invalid">
+                            <sup>*</sup> Informe o valor
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Mês de Referência</mat-label>
+                        <input
+                            type="date"
+                            matInput
+                            formControlName="referencia"
+                            placeholder="Informe a referência" is required/>
+
+                        <mat-error *ngIf="propriedade.referencia.touched && propriedade.referencia.invalid">
+                            <sup>*</sup> Informe a referência
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Selecione o tipo</mat-label>
+                        <mat-select formControlName="tipo" required>
+                            <mat-option *ngFor="let tipo of tipos" [value]="tipo.valor">{{tipo.exibicao}}</mat-option>
+                        </mat-select>
+
+                        <mat-error *ngIf="propriedade.tipo.touched && propriedade.tipo.invalid">
+                            <sup>*</sup> Selecione o tipo
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+
+            <mat-divider></mat-divider>
+
+            <mat-card-actions>
+                <div>
+                    <button type="submit" mat-stroked-button color="primary" [disabled]="formulario.invalid">
+                        Salvar
+                    </button>
+                    <button mat-stroked-button type="button" (click)="VoltarListagem()">Voltar</button>
+                </div>
+            </mat-card-actions>
+
+        </form>
+    </mat-card>
+</div>

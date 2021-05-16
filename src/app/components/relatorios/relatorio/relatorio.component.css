@@ -1,0 +1,50 @@
+.dadosRelatorio{
+    padding: 30px 30px 30px 30px;
+}
+
+.cabecalho{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.titulo{
+    position: absolute;
+    left: 5px
+}
+
+.tabela{
+    width: 100%;
+}
+
+th.mat-header-cell{
+    width: 60%;
+}
+
+tr.mat-footer-row {
+    font-weight: bold;
+}
+
+.resultado {
+    width: auto;
+}
+
+.resultado h3{
+    font-weight: bold;
+    width: auto;
+}
+
+.total{
+    width: 100%;
+    position: relative;
+    left: 10px;
+}
+
+.valorTotal {
+    width: auto;
+    position: relative;
+    right: 5px;
+}
+
+.dataFinal{
+    left: 10px;
+}
